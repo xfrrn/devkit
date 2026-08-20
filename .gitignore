@@ -1,0 +1,12 @@
+# OS / 编辑器
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/
+
+# 依赖与构建（预留：后续 package 若引入构建再启用）
+node_modules/
+dist/
+build/
+*.log
