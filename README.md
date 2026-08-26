@@ -18,11 +18,13 @@
 devkit/
 ├── README.md                     ← 你在这里（套件总览 / 索引 / 复用方式）
 ├── packages/
-│   ├── design-system/            ← 静谧原生 UI 设计系统（移动端 Web/PWA）
-│   │   ├── README.md             ←   设计规范（15 节）
-│   │   ├── tokens.css            ←   语义 Token（浅/深）
-│   │   ├── tailwind.config.ts    ←   Tailwind 骨架
-│   │   └── globals.css           ←   全局 base + 工具类
+│   ├── design-system/            ← UI 设计规范（按风格分类）
+│   │   ├── README.md             ←   风格索引
+│   │   └── quiet-native/         ←   静谧原生设计规范（移动端 Web/PWA）
+│   │       ├── README.md         ←     设计规范（15 节）
+│   │       ├── tokens.css        ←     语义 Token（浅/深）
+│   │       ├── tailwind.config.ts ←    Tailwind 骨架
+│   │       └── globals.css       ←     全局 base + 工具类
 │   ├── backend-logging/          ← 后端日志开发规范（规划中）
 │   └── architecture/             ← 技术框架 / 架构方法（规划中）
 └── docs/
@@ -33,7 +35,7 @@ devkit/
 
 | Package | 状态 | 一句话 | 入口 |
 |---|---|---|---|
-| `design-system` | ✅ 可用 | 移动端 Web/PWA 设计系统，Apple 原生气质 | `packages/design-system/README.md` |
+| `design-system` | ✅ 可用 | 按风格分类的 UI 设计规范 | `packages/design-system/README.md` |
 | `backend-logging` | 🚧 规划中 | 后端日志：结构化、分级、可观测 | `packages/backend-logging/` |
 | `architecture` | 🚧 规划中 | 技术选型、分层、模块边界 | `packages/architecture/` |
 
@@ -45,7 +47,7 @@ devkit/
 
 以设计系统为例：
 ```
-packages/design-system/ 的 tokens.css + globals.css + tailwind.config.ts
+packages/design-system/quiet-native/ 的 tokens.css + globals.css + tailwind.config.ts
   → 拷进新项目 → 入口按 tokens.css 再 globals.css 引入 → 改品牌色即可
 ```
 
@@ -57,6 +59,8 @@ packages/design-system/ 的 tokens.css + globals.css + tailwind.config.ts
 2. 必有一个 `README.md`：写**规范 / 原则 / 反模式 / 落地步骤**。
 3. 代码骨架直接平铺在该目录，拷走即用。
 4. 在本文件的「Package 索引」表格里登记一行。
+
+`design-system` 按风格再分一层：`packages/design-system/<style>/`，每套风格自包含 `README.md` 与代码骨架。
 
 > 原则：**规范优先于代码**。代码骨架是规范的可执行示例，文档才是本体。
 
