@@ -1,0 +1,99 @@
+{
+  "name": "devkit-clean",
+  "version": "1.1.0",
+  "description": "Semantic reference theme for aligned, color-coded Pretty Terminal logs.",
+  "layout": {
+    "separator": "  ",
+    "time_format": "HH:mm:ss.SSS",
+    "time_width": 12,
+    "level_width": 5,
+    "scope_width": 20,
+    "message_width": 30,
+    "ellipsis": "…",
+    "tab_allowed": false,
+    "ansi_aware_width": true,
+    "unicode_display_width": true
+  },
+  "palette": {
+    "time": {
+      "ansi16": "bright_black",
+      "sgr": [2, 90]
+    },
+    "level": {
+      "trace": {
+        "ansi16": "bright_black",
+        "sgr": [2, 90]
+      },
+      "debug": {
+        "ansi16": "bright_cyan",
+        "sgr": [96]
+      },
+      "info": {
+        "ansi16": "bright_green",
+        "sgr": [92]
+      },
+      "warn": {
+        "ansi16": "bright_yellow",
+        "sgr": [1, 93]
+      },
+      "error": {
+        "ansi16": "bright_red",
+        "sgr": [1, 91]
+      },
+      "fatal": {
+        "ansi16": "bright_red",
+        "sgr": [1, 91]
+      }
+    },
+    "scope": {
+      "ansi16": "bright_blue",
+      "sgr": [94]
+    },
+    "message": {
+      "ansi16": "default",
+      "sgr": [39]
+    },
+    "context_key": {
+      "ansi16": "bright_black",
+      "sgr": [2, 90]
+    },
+    "context_value": {
+      "ansi16": "default",
+      "sgr": [39]
+    },
+    "error_type": {
+      "ansi16": "bright_red",
+      "sgr": [1, 91]
+    },
+    "stack": {
+      "ansi16": "bright_black",
+      "sgr": [2, 90]
+    }
+  },
+  "semantic_accents": {
+    "http_status": {
+      "2xx": "bright_green",
+      "3xx": "bright_cyan",
+      "4xx": "bright_yellow",
+      "5xx": "bright_red"
+    },
+    "duration": {
+      "normal": "default",
+      "slow": "bright_yellow",
+      "critical": "bright_red"
+    },
+    "outcome": {
+      "success": "bright_green",
+      "degraded": "bright_yellow",
+      "failure": "bright_red"
+    }
+  },
+  "rules": {
+    "color_entire_line": false,
+    "random_scope_colors": false,
+    "rainbow_value_types": false,
+    "ansi_in_json": false,
+    "color_required_for_tty_pretty": true,
+    "layout_must_survive_no_color": true
+  }
+}

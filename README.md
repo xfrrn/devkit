@@ -8,7 +8,7 @@
 ## 这是什么
 
 不是组件库、不是框架，而是一套**「可以直接抄走用」的工程资产**。
-按领域分包，每个 package 自包含：**规范文档（README）+ 可拷贝的代码骨架**。
+按领域分包，每个 package 自包含：**规范文档（README）+ 可拷贝的代码骨架或 Agent Skill**。
 
 复用方式统一为 **clone 后拷贝文件**——无构建、无版本、无安装，最轻。
 
@@ -18,6 +18,7 @@
 devkit/
 ├── README.md                     ← 你在这里（套件总览 / 索引 / 复用方式）
 ├── packages/
+│   ├── backend-logging/          ← 跨语言彩色对齐终端日志、Pretty Terminal 与 NDJSON Skill
 │   ├── design-system/            ← UI 设计规范（按风格分类）
 │   │   ├── README.md             ←   风格索引
 │   │   └── quiet-native/         ←   静谧原生设计规范（通用 Web/PWA）
@@ -38,6 +39,7 @@ devkit/
 
 | Package | 状态 | 一句话 | 入口 |
 |---|---|---|---|
+| `backend-logging` | ✅ 可用 | 跨语言日志系统：彩色对齐终端、结构化 NDJSON 与 Agent Skill | `packages/backend-logging/README.md` |
 | `design-system` | ✅ 可用 | 按风格分类的 UI 设计规范 | `packages/design-system/README.md` |
 | `project-docs` | ✅ 可用 | 按需创建和维护项目文档 | `packages/project-docs/README.md` |
 
@@ -45,7 +47,7 @@ devkit/
 
 1. **clone** 本仓库到本地。
 2. 找到需要的 package，读它的 `README.md`（规范 + 落地步骤）。
-3. **拷贝**该 package 里的代码骨架进你的项目，按其 README 调整。
+3. **拷贝**该 package 里的代码骨架或 Skill 进你的项目，按其 README 调整。
 
 以设计系统为例：
 ```
@@ -59,7 +61,7 @@ packages/design-system/quiet-native/ 的 tokens.css + globals.css + tailwind.con
 
 1. 在 `packages/` 下建目录：`packages/<name>/`
 2. 必有一个 `README.md`：写**规范 / 原则 / 反模式 / 落地步骤**。
-3. 代码骨架直接平铺在该目录，拷走即用。
+3. 代码骨架或 Agent Skill 放在该目录，拷走即用。
 4. 在本文件的「Package 索引」表格里登记一行。
 
 `design-system` 按风格再分一层：`packages/design-system/<style>/`，每套风格自包含 `README.md` 与代码骨架。
