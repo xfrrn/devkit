@@ -18,13 +18,14 @@
 devkit/
 ├── README.md                     ← 你在这里（套件总览 / 索引 / 复用方式）
 ├── packages/
-│   └── design-system/            ← UI 设计规范（按风格分类）
-│       ├── README.md             ←   风格索引
-│       └── quiet-native/         ←   静谧原生设计规范（通用 Web/PWA）
-│           ├── README.md         ←     设计规范（15 节）
-│           ├── tokens.css        ←     语义 Token（浅/深）
-│           ├── tailwind.config.ts ←    Tailwind 骨架
-│           └── globals.css       ←     全局 base + 工具类
+│   ├── design-system/            ← UI 设计规范（按风格分类）
+│   │   ├── README.md             ←   风格索引
+│   │   └── quiet-native/         ←   静谧原生设计规范（通用 Web/PWA）
+│   │       ├── README.md         ←     设计规范（15 节）
+│   │       ├── tokens.css        ←     语义 Token（浅/深）
+│   │       ├── tailwind.config.ts ←    Tailwind 骨架
+│   │       └── globals.css       ←     全局 base + 工具类
+│   └── project-docs/             ← 项目文档模板与 Agent Skill
 ├── tests/
 │   └── design-system/
 │       └── quiet-native/
@@ -38,6 +39,7 @@ devkit/
 | Package | 状态 | 一句话 | 入口 |
 |---|---|---|---|
 | `design-system` | ✅ 可用 | 按风格分类的 UI 设计规范 | `packages/design-system/README.md` |
+| `project-docs` | ✅ 可用 | 按需创建和维护项目文档 | `packages/project-docs/README.md` |
 
 ## 怎么用（三步）
 
