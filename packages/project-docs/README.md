@@ -25,8 +25,8 @@
 
 适合：
 
-- 初始化一个新软件项目；
-- 给已经开始开发、但文档混乱的项目补齐基线；
+- 开发前从一句项目想法开始，经过访谈形成可执行文档；
+- 开发中补齐、更新和审计文档，并同步计划、进度和关键决策；
 - 让 Claude Code、Codex 或其他支持 Agent Skills 的开发 Agent 按同一方法创建和维护文档；
 - 个人开发、小团队、早期创业项目；
 - 需要在多个项目间复用相同文档规范。
@@ -61,6 +61,8 @@ project-docs/
 │       └── decisions/
 │           └── ADR-000-template.md
 ├── references/
+│   ├── initialization-interview.md
+│   ├── development-maintenance.md
 │   ├── document-map.md
 │   └── quality-checklist.md
 └── scripts/
@@ -93,7 +95,7 @@ docs/
 |---|---|
 | `00-project-brief.md` | 为什么做、给谁用、做什么、不做什么、怎样算成功 |
 | `01-requirements.md` | 用户要完成什么、系统必须具备什么行为和质量 |
-| `02-system-design.md` | 系统怎样分层、模块怎样协作、技术方案怎样落地 |
+| `02-system-design.md` | 系统怎样组织、模块怎样协作、技术方案怎样落地 |
 | `03-domain-model.md` | 核心业务对象、术语、关系、状态与业务规则是什么 |
 | `04-api-contract.md` | 系统边界之间如何通过稳定契约交换数据 |
 | `05-data-design.md` | 数据如何持久化、约束、索引、迁移、缓存和清理 |
@@ -235,27 +237,43 @@ cp -R /path/to/devkit/packages/project-docs/* .agents/skills/project-docs/
 
 ## 推荐工作流
 
+本 Skill 有两个主要入口：
+
+| 项目阶段 | Skill 行为 |
+|---|---|
+| 尚未开始开发 | 主动访谈，形成开发前文档基线 |
+| 正在开发 | 读取文档和代码证据，只维护本次变化影响的内容 |
+
 ### 新项目
 
 ```text
-1. 创建仓库与 README
-2. 运行初始化脚本
-3. 让 Agent 读取 SKILL.md
-4. 先完成 Brief 和 Requirements
-5. 按项目实际情况增加 Domain、API、Data、Security 或 Testing
-6. 需要维护计划或开发历史时再增加 Roadmap、Progress Log
-7. 出现重要取舍时新增 ADR
+1. 用户简单说明项目想法并调用 Skill
+2. Skill 提取已有信息，集中询问阻塞问题
+3. 先确认目标、用户、MVP、非目标和核心流程
+4. 生成 Brief 和 Requirements
+5. 按项目实际情况增加 Domain、System、API、Data、Security、Testing 和 Roadmap
+6. 通过开发就绪检查后再开始实现
+7. 开发开始后记录 Progress，重要取舍使用 ADR
 ```
 
-### 已有项目补档
+最简调用示例：
 
 ```text
-1. 先读取代码、配置、migration、测试和 CI
-2. 区分“代码已实现事实”与“原始设计意图”
-3. 生成文档缺口审计
-4. 只补当前能被证据支持的内容
-5. 将不一致和未知项列入待确认问题
-6. 不因为模板存在就重写全部已有文档
+$project-docs 我想做一个帮助家庭管理食品保质期的应用，请引导我完成开发前文档。
+```
+
+用户不需要预先准备完整需求；Initialize 模式会读取 `references/initialization-interview.md` 主动完成需求访谈。
+
+### 正在开发的项目
+
+```text
+1. 读取本次变更相关的文档、diff、代码、测试和配置
+2. 区分 Planned、In Progress、Implemented 和 Diverged
+3. 根据变更影响只更新相关文档
+4. 需求变化先更新 Requirements，再检查下游设计
+5. 完成项需要实现和验证证据
+6. 同步 Roadmap、Progress Log，重要取舍使用 ADR
+7. 保留并报告无法判断的文档—实现冲突
 ```
 
 ---

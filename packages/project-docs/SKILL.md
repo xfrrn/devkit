@@ -1,9 +1,9 @@
 ---
 name: project-docs
-description: Create, formalize, update, or audit maintainable software-project documentation, including requirements, architecture, API/data/security design, roadmaps, progress logs, and ADRs. Use when documentation must be grounded in repository evidence and kept consistent across changes.
+description: Guide a vague software-project idea into a development-ready documentation baseline, or keep requirements, architecture, contracts, plans, progress, and ADRs aligned while a project is being developed. Use before development starts or during active software development.
 metadata:
   author: xfrrn
-  version: "1.1.0"
+  version: "1.3.0"
 ---
 
 # Project Docs
@@ -12,14 +12,30 @@ Maintain the smallest useful set of project documents. Keep product intent,
 implementation facts, contracts, plans, history, and decisions consistent
 without creating empty documentation for its own sake.
 
-## Select the mode
+## Select the lifecycle workflow
 
-- **Initialize**: create a minimal baseline for a new project.
-- **Formalize**: derive current documentation from an existing repository.
-- **Update**: change only documents affected by a requirement or implementation change.
+### 1. Preparing a new project
+
+Use **Initialize** when meaningful implementation has not started. Read
+[references/initialization-interview.md](references/initialization-interview.md),
+guide the user from their initial idea through the blocking product and design
+questions, then create a development-ready baseline.
+
+### 2. Actively developing a project
+
+When meaningful source code already exists or the user says development is in
+progress, read
+[references/development-maintenance.md](references/development-maintenance.md)
+and infer the needed operation:
+
+- **Formalize**: derive missing documentation from current repository evidence.
+- **Update**: synchronize documents affected by a requirement or implementation change.
 - **Audit**: report gaps, contradictions, stale content, and duplicated facts.
 - **ADR**: record one important, expensive-to-reverse, or disputed decision.
 - **Progress**: append a meaningful progress entry and update milestone status.
+
+The user's stated stage overrides inference from the repository. A scaffold or
+empty module alone does not mean development has started.
 
 For Initialize, Formalize, Update, or Audit, read
 [references/document-map.md](references/document-map.md) to select affected
@@ -44,9 +60,10 @@ Treat information as one of:
 Mark non-facts explicitly with `[假设]`, `[待确认]`, or `[暂定]`. Never fill a
 template by turning an example or assumption into a project fact.
 
-When essential context is missing, ask one consolidated set of blocking
-questions if interaction is available. Otherwise proceed with visible
-assumptions and a `待确认问题` section.
+For Initialize, a short project description is enough to begin: extract what
+the user already supplied, then lead the missing discovery. For other modes,
+ask one consolidated set of blocking questions when essential context is
+missing. Proceed with visible assumptions only for non-blocking gaps.
 
 ## Create only what is useful
 
@@ -101,13 +118,6 @@ Use cross-references elsewhere. Add stable identifiers such as `FR-001`,
 `AC-001`, `M0`, or `ADR-001` only when they improve real traceability.
 
 ## Mode-specific rules
-
-### Existing repositories
-
-- Describe what exists, not an idealized architecture.
-- Call out divergence between implementation and intended design.
-- Do not claim completion from an interface, stub, or empty module.
-- Preserve valid user-written documentation and formatting.
 
 ### Progress
 
