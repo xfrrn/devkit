@@ -20,7 +20,7 @@ devkit/
 ├── packages/
 │   ├── design-system/            ← UI 设计规范（按风格分类）
 │   │   ├── README.md             ←   风格索引
-│   │   └── quiet-native/         ←   静谧原生设计规范（移动端 Web/PWA）
+│   │   └── quiet-native/         ←   静谧原生设计规范（通用 Web/PWA）
 │   │       ├── README.md         ←     设计规范（15 节）
 │   │       ├── tokens.css        ←     语义 Token（浅/深）
 │   │       ├── tailwind.config.ts ←    Tailwind 骨架

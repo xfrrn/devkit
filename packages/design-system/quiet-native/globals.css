@@ -34,7 +34,7 @@
     overscroll-behavior-y: none;
   }
 
-  /* 衬线内容字：阅读场景正文使用 */
+  /* 可选衬线内容字：仅连续长内容使用 */
   .font-content,
   .font-serif {
     font-family: var(--font-content);

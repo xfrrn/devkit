@@ -4,6 +4,6 @@
 
 | 风格 | 适用场景 | 入口 |
 |---|---|---|
-| 静谧原生 | 内容型 / 工具型移动端 Web/PWA | [`quiet-native/`](./quiet-native/) |
+| 静谧原生 | 通用 Web/PWA 产品界面 | [`quiet-native/`](./quiet-native/) |
 
 新增风格时，在本目录下新建 `packages/design-system/<style>/`，并在上表登记入口。

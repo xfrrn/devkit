@@ -55,9 +55,6 @@ export default {
         xl: 'var(--radius-xl)',
         full: '9999px'
       },
-      maxWidth: {
-        app: '720px'
-      },
       boxShadow: {
         control: 'var(--shadow-control)',
         sheet: 'var(--shadow-sheet)',
