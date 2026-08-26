@@ -18,15 +18,13 @@
 devkit/
 ├── README.md                     ← 你在这里（套件总览 / 索引 / 复用方式）
 ├── packages/
-│   ├── design-system/            ← UI 设计规范（按风格分类）
-│   │   ├── README.md             ←   风格索引
-│   │   └── quiet-native/         ←   静谧原生设计规范（通用 Web/PWA）
-│   │       ├── README.md         ←     设计规范（15 节）
-│   │       ├── tokens.css        ←     语义 Token（浅/深）
-│   │       ├── tailwind.config.ts ←    Tailwind 骨架
-│   │       └── globals.css       ←     全局 base + 工具类
-│   ├── backend-logging/          ← 后端日志开发规范（规划中）
-│   └── architecture/             ← 技术框架 / 架构方法（规划中）
+│   └── design-system/            ← UI 设计规范（按风格分类）
+│       ├── README.md             ←   风格索引
+│       └── quiet-native/         ←   静谧原生设计规范（通用 Web/PWA）
+│           ├── README.md         ←     设计规范（15 节）
+│           ├── tokens.css        ←     语义 Token（浅/深）
+│           ├── tailwind.config.ts ←    Tailwind 骨架
+│           └── globals.css       ←     全局 base + 工具类
 ├── tests/
 │   └── design-system/
 │       └── quiet-native/
@@ -40,8 +38,6 @@ devkit/
 | Package | 状态 | 一句话 | 入口 |
 |---|---|---|---|
 | `design-system` | ✅ 可用 | 按风格分类的 UI 设计规范 | `packages/design-system/README.md` |
-| `backend-logging` | 🚧 规划中 | 后端日志：结构化、分级、可观测 | `packages/backend-logging/` |
-| `architecture` | 🚧 规划中 | 技术选型、分层、模块边界 | `packages/architecture/` |
 
 ## 怎么用（三步）
 
@@ -57,7 +53,7 @@ packages/design-system/quiet-native/ 的 tokens.css + globals.css + tailwind.con
 
 ## 新增一个 package 的约定
 
-每个新领域（如 `backend-logging`、`architecture`）都遵循同一形态：
+每个新领域都遵循同一形态：
 
 1. 在 `packages/` 下建目录：`packages/<name>/`
 2. 必有一个 `README.md`：写**规范 / 原则 / 反模式 / 落地步骤**。
