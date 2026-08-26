@@ -5,6 +5,7 @@
 >
 > 本规范附带可直接拷贝的代码骨架：`tokens.css` + `tailwind.config.ts` + `globals.css`。
 > 用法见 §14；这是 devkit 的 `design-system` package 中的一套风格规范，根级说明见仓库 `README.md`。
+> 测试用例见 [`tests/design-system/quiet-native`](../../../tests/design-system/quiet-native/)。
 
 ---
 

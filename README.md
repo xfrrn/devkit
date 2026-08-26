@@ -27,6 +27,10 @@ devkit/
 │   │       └── globals.css       ←     全局 base + 工具类
 │   ├── backend-logging/          ← 后端日志开发规范（规划中）
 │   └── architecture/             ← 技术框架 / 架构方法（规划中）
+├── tests/
+│   └── design-system/
+│       └── quiet-native/
+│           └── README.md         ← 测试内容、提示词与运行配置
 └── docs/
     └── principles.md             ← 跨领域的通用工程原则
 ```
