@@ -208,7 +208,8 @@ Level 1 可以包含多个 Level 2，但不要在 Card 内继续套同样边框�
 - 标签常显，Placeholder 只提供示例，不替代标签。
 - Focus 同时改变边框并显示 3px 低透明焦点环。
 - Textarea 默认最小 80px，可纵向调整；编辑器正文由画布控制，不嵌套第二个滚动区。
-- Select 的 Trigger 与相邻控件同高；Popover 最高不超过可用视口。
+- 桌面工作台不把浏览器原生 `<select>` 的选项面板作为完成态；默认复用项目已有的可访问 Select / Listbox 组件，使 Trigger、Popover、选项和选中态全部消费本系统 Token。
+- Select 的 Trigger 与相邻控件同高；Popover 最高不超过可用视口。原生 `<select>` 只作为明确需要系统控件或无定制组件环境下的降级方案。
 
 ### Checkbox / Switch
 
@@ -332,7 +333,7 @@ Level 1 可以包含多个 Level 2，但不要在 Card 内继续套同样边框�
 - 加载、保存和异步结果使用 `role="status"` / `aria-live="polite"`；错误使用 `role="alert"`。
 - 状态不能只靠颜色：同时给出文字、图标、形状或位置变化。
 - 触屏消费者把点击区域提升到至少 44×44px；桌面紧凑模式不能直接视为触屏合格。
-- Reduced Motion 和系统高对比模式必须保留功能；原生表单控件优先于自绘替代。
+- Reduced Motion 和系统高对比模式必须保留功能；Input、Textarea、Checkbox 等原生表单控件优先于自绘替代，但 Select 按上文规则使用成熟的可访问组件。
 
 ## 16. 落地到新项目
 
@@ -361,6 +362,7 @@ Level 1 可以包含多个 Level 2，但不要在 Card 内继续套同样边框�
 强调      #8b5cf6，仅定位选中和辅助能力；Primary 仍用近黑
 间距      4px 网格；页面 24；区块 24–32
 控件      32/36/40px；触屏项目提升到 ≥44px
+选择器    默认用 Token 化 Select/Listbox；原生 select 仅作明确降级
 圆角      6/8/10/14/full
 边界      普通层用 1px #e5e5e5；Hover #d4d4d4
 阴影      只给 Popover/Dialog/Drawer

@@ -13,6 +13,10 @@
     @media(max-width:480px){.main{padding:24px 16px 104px}.summary{grid-template-columns:1fr 1fr}.metric:last-child{grid-column:1/-1;display:flex;align-items:center;justify-content:space-between}.field-row{grid-template-columns:1fr}.nav-item{flex-direction:column;gap:1px}.fab{bottom:92px}}
     @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
   </style>
+  <style>
+    .selectbox{position:relative}.selectbox>select{display:none}.select-trigger{display:flex;width:100%;min-height:48px;align-items:center;justify-content:space-between;padding:12px;border:1px solid var(--separator);border-radius:12px;background:var(--bg-surface);text-align:left}.select-trigger:after{width:8px;height:8px;margin:-4px 2px 0 12px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(45deg);content:""}.select-trigger[aria-expanded="true"]{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}.select-trigger[aria-expanded="true"]:after{margin-top:4px;transform:rotate(225deg)}.select-menu{position:absolute;z-index:10;top:calc(100% + 4px);right:0;left:0;padding:4px;border:1px solid var(--separator);border-radius:16px;background:var(--bg-surface);box-shadow:var(--shadow-float)}.select-menu[hidden]{display:none}.select-option{display:flex;width:100%;min-height:44px;align-items:center;justify-content:space-between;padding:0 12px;border-radius:12px;background:transparent;text-align:left}.select-option:hover,.select-option:focus-visible{background:var(--bg-secondary)}.select-option[aria-selected="true"]{background:var(--accent-soft);font-weight:600}.select-option[aria-selected="true"]:after{color:var(--accent);content:"✓"}
+    .selectbox.open-up .select-menu{top:auto;bottom:calc(100% + 28px)}dialog{overflow:visible}
+  </style>
 </head>
 <body>
   <div class="app">
@@ -64,6 +68,21 @@
     ];
     let filter='all';const list=document.querySelector('#taskList'),empty=document.querySelector('#empty'),dialog=document.querySelector('#taskDialog');
     const label={all:'全部任务',today:'今天',done:'已完成'};
+    function enhanceSelect(select){
+      const box=document.createElement('div'),trigger=document.createElement('button'),menu=document.createElement('div'),fieldLabel=document.querySelector(`label[for="${select.id}"]`);
+      let handledEscape=false;
+      box.className='selectbox';trigger.type='button';trigger.className='select-trigger';trigger.id=`${select.id}Trigger`;trigger.setAttribute('aria-haspopup','listbox');trigger.setAttribute('aria-expanded','false');menu.className='select-menu';menu.role='listbox';menu.hidden=true;menu.setAttribute('aria-label',fieldLabel?.textContent||'选择选项');
+      select.before(box);box.append(select,trigger,menu);fieldLabel?.setAttribute('for',trigger.id);
+      [...select.options].forEach(option=>{const button=document.createElement('button');button.type='button';button.className='select-option';button.role='option';button.dataset.value=option.value;button.textContent=option.textContent;button.onclick=()=>{select.value=option.value;sync();close();trigger.focus()};menu.append(button)});
+      const sync=()=>{trigger.textContent=select.selectedOptions[0]?.textContent||'';menu.querySelectorAll('.select-option').forEach(button=>button.setAttribute('aria-selected',String(button.dataset.value===select.value)))};
+      const close=()=>{menu.hidden=true;box.classList.remove('open-up');trigger.setAttribute('aria-expanded','false')};
+      trigger.onclick=()=>{const open=menu.hidden;menu.hidden=!open;trigger.setAttribute('aria-expanded',String(open));if(open){box.classList.toggle('open-up',menu.getBoundingClientRect().bottom>innerHeight-8);menu.querySelector('[aria-selected="true"]')?.focus()}};
+      menu.onkeydown=event=>{const options=[...menu.children],index=options.indexOf(document.activeElement);if(['ArrowDown','ArrowUp','Home','End'].includes(event.key)){event.preventDefault();const next=event.key==='Home'?0:event.key==='End'?options.length-1:(index+(event.key==='ArrowDown'?1:-1)+options.length)%options.length;options[next].focus()}if(event.key==='Escape'){event.preventDefault();handledEscape=true;setTimeout(()=>handledEscape=false);close();trigger.focus()}};
+      select.closest('dialog')?.addEventListener('cancel',event=>{if(handledEscape)event.preventDefault()});
+      document.addEventListener('click',event=>{if(!box.contains(event.target))close()});select.form?.addEventListener('reset',()=>queueMicrotask(sync));select._sync=sync;sync();return box;
+    }
+    enhanceSelect(document.querySelector('#taskPriority'));
+    console.assert(document.querySelectorAll('.selectbox').length===document.querySelectorAll('select').length,'自定义选择器未完整初始化');
     function render(){const shown=tasks.filter(t=>filter==='all'||filter==='today'&&!t.done&&t.date===today||filter==='done'&&t.done);list.innerHTML=shown.map(t=>`<article class="task ${t.done?'done':''}" data-id="${t.id}"><button class="check" aria-label="${t.done?'标为未完成':'标为已完成'}"><span></span></button><div class="task-copy"><strong>${escapeHtml(t.title)}</strong><small>${escapeHtml(t.note||dateText(t.date))}</small></div><i class="priority ${t.priority}" aria-label="${t.priority==='urgent'?'紧急':'普通'}"></i></article>`).join('');list.style.display=shown.length?'block':'none';empty.style.display=shown.length?'none':'block';document.querySelector('#todoCount').textContent=tasks.filter(t=>!t.done).length;document.querySelector('#doneCount').textContent=tasks.filter(t=>t.done).length;document.querySelector('#sideCount').textContent=tasks.length;document.querySelector('#sectionTitle').textContent=label[filter]}
     function escapeHtml(value){const el=document.createElement('span');el.textContent=value;return el.innerHTML}
     function dateText(date){return date===today?'今天':new Intl.DateTimeFormat('zh-CN',{month:'long',day:'numeric'}).format(new Date(date+'T00:00:00'))}

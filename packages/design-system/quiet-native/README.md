@@ -251,7 +251,11 @@ Apple Settings 的 inset-grouped：一个圆角白卡片浮在灰背景上，行
 所有可点区域 ≥ `44×44`（用 `min-h-11` = 44px 兜底）。
 
 ### Form Controls
-优先使用原生 `input` / `select` / `textarea`，统一 `min-h-11 rounded-md border border-hairline bg-surface`。标签常显，帮助文字与错误紧跟控件；错误不能只靠红色表达。
+`input` / `textarea` 优先保留原生语义并套用 `min-h-11 rounded-md border border-hairline bg-surface`。`select` 是例外：桌面浏览器的原生选项面板无法完整继承本系统的色彩、圆角、间距和选中态，产品界面默认使用项目已有的可访问 Select / Listbox 组件。
+
+- Trigger 与相邻控件同高；选项浮层使用 `bg-surface`、`border-hairline`、`rounded-lg` 和浮层阴影，当前项用 `accent-soft` + 对勾表达。
+- 保留标签、键盘导航、Escape 关闭、焦点返回和正确的 `aria` 语义；不要为换皮手写一套不完整的键盘与焦点管理。
+- 仅当移动触控流程明确需要系统选择器，或产品本身刻意采用平台原生控件时，才直接显示原生 `<select>`。
 
 ### 触控反馈（克制但有感）
 可点列表行按下时轻微回弹 + 高亮，松手弹回：
@@ -335,6 +339,7 @@ cubic-bezier(.2, .8, .2, 1)
 强调    text-accent(仅此一处彩色)
 分隔    divide-hairline / border-hairline
 内容    同构信息用 InsetGroup，表单/卡片共用 Surface
+选择器  默认用 Token 化 Select/Listbox；原生 select 仅用于明确的系统选择器
 圆角    sm8 md12 lg16 xl20 full
 间距    只用 4 的倍数，页面左右 16
 触控    active:scale-[0.97] active:bg-subtle，≥44px
