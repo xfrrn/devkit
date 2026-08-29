@@ -21,16 +21,23 @@ devkit/
 │   ├── backend-logging/          ← 跨语言彩色对齐终端日志、Pretty Terminal 与 NDJSON Skill
 │   ├── design-system/            ← UI 设计规范（按风格分类）
 │   │   ├── README.md             ←   风格索引
-│   │   └── quiet-native/         ←   静谧原生设计规范（通用 Web/PWA）
-│   │       ├── README.md         ←     设计规范（15 节）
-│   │       ├── tokens.css        ←     语义 Token（浅/深）
+│   │   ├── quiet-native/         ←   静谧原生设计规范（通用 Web/PWA）
+│   │   │   ├── README.md         ←     设计规范
+│   │   │   ├── tokens.css        ←     语义 Token（浅/深）
+│   │   │   ├── tailwind.config.ts ←    Tailwind 骨架
+│   │   │   └── globals.css       ←     全局 base + 工具类
+│   │   └── precision-workbench/  ←   精密工作台设计规范（桌面工具）
+│   │       ├── README.md         ←     设计规范
+│   │       ├── tokens.css        ←     语义 Token（浅色）
 │   │       ├── tailwind.config.ts ←    Tailwind 骨架
 │   │       └── globals.css       ←     全局 base + 工具类
 │   └── project-docs/             ← 项目文档模板与 Agent Skill
 ├── tests/
 │   └── design-system/
-│       └── quiet-native/
-│           └── README.md         ← 测试内容、提示词与运行配置
+│       ├── quiet-native/
+│       │   └── README.md         ← 静谧原生测试记录
+│       └── precision-workbench/
+│           └── README.md         ← 精密工作台测试记录
 └── docs/
     └── principles.md             ← 跨领域的通用工程原则
 ```

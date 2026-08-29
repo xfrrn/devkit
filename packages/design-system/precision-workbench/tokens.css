@@ -1,0 +1,109 @@
+/* Precision Workbench · semantic design tokens
+   Import before globals.css. This package ships no font files and no dark theme. */
+
+:root {
+  /* Type */
+  --font-sans:
+    Inter,
+    "Segoe UI",
+    "PingFang SC",
+    "Microsoft YaHei",
+    sans-serif;
+  --font-mono:
+    ui-monospace,
+    SFMono-Regular,
+    Menlo,
+    Consolas,
+    monospace;
+
+  --font-size-xs: 0.75rem; /* 12px: metadata, status, dense labels */
+  --font-size-sm: 0.8125rem; /* 13px: controls and list rows */
+  --font-size-md: 0.875rem; /* 14px: default UI copy */
+  --font-size-lg: 1rem; /* 16px: section headings */
+  --font-size-xl: 1.25rem; /* 20px: panel headings */
+  --font-size-2xl: 1.5rem; /* 24px: page headings */
+  --line-height-tight: 1.25;
+  --line-height-normal: 1.5;
+
+  /* Canvas and surfaces */
+  --bg-primary: #ffffff;
+  --bg-surface: #ffffff;
+  --bg-elevated: #ffffff;
+  --bg-secondary: #fafafa;
+  --bg-muted: #f5f5f5;
+
+  /* Text */
+  --text-primary: #171717;
+  --text-secondary: #737373;
+  --text-tertiary: #a3a3a3;
+  --text-on-strong: #ffffff;
+
+  /* Borders and selection */
+  --border: #e5e5e5;
+  --border-strong: #d4d4d4;
+  --separator: #e5e5e5;
+  --focus-ring: #a3a3a3;
+
+  /* Accent is a locator, not the default button fill. */
+  --accent: #8b5cf6;
+  --accent-hover: color-mix(in srgb, var(--accent) 88%, var(--text-primary));
+  --accent-active: color-mix(in srgb, var(--accent) 76%, var(--text-primary));
+  --accent-soft: #f5f3ff;
+  --on-accent: #ffffff;
+
+  /* Status */
+  --success: #16a34a;
+  --success-soft: #f0fdf4;
+  --warning: var(--accent);
+  --warning-soft: var(--accent-soft);
+  --danger: #dc2626;
+  --danger-hover: #b91c1c;
+  --danger-soft: #fef2f2;
+  --overlay: rgb(23 23 23 / 45%);
+
+  /* 4px grid */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+
+  /* Dense pointer-first controls */
+  --control-height-sm: 2rem;
+  --control-height-md: 2.25rem;
+  --control-height-lg: 2.5rem;
+
+  /* Radius */
+  --radius-sm: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.625rem;
+  --radius-xl: 0.875rem;
+  --radius-full: 9999px;
+
+  /* Only floating layers receive shadows. */
+  --shadow-control: 0 1px 2px rgb(23 23 23 / 8%);
+  --shadow-popover: 0 12px 32px rgb(23 23 23 / 14%);
+  --shadow-dialog: 0 24px 48px rgb(23 23 23 / 18%);
+  --shadow-drawer: -12px 0 28px rgb(23 23 23 / 10%);
+
+  /* Motion */
+  --duration-fast: 120ms;
+  --duration-normal: 150ms;
+  --duration-slow: 180ms;
+  --ease-standard: ease;
+  --ease-out: ease-out;
+
+  /* Layer order */
+  --z-base: 0;
+  --z-sticky: 10;
+  --z-assistant: 30;
+  --z-assistant-overlay: 31;
+  --z-dialog: 100;
+  --z-dialog-content: 101;
+  --z-popover: 120;
+
+  color-scheme: light;
+}
