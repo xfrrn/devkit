@@ -5,6 +5,8 @@
 - Skill：`precision-workbench`
 - Source：`packages/design-system/precision-workbench`
 - Model：未指定
+- Model：`gpt-5.6-sol`
+- Reasoning：`medium`
 - Agent Harness：Codex Desktop
 
 ## 测试目的
