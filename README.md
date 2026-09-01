@@ -31,7 +31,8 @@ devkit/
 │   │       ├── tokens.css        ←     语义 Token（浅色）
 │   │       ├── tailwind.config.ts ←    Tailwind 骨架
 │   │       └── globals.css       ←     全局 base + 工具类
-│   └── project-docs/             ← 项目文档模板与 Agent Skill
+│   ├── project-docs/             ← 项目文档模板与 Agent Skill
+│   └── project-testing/          ← 按改动类型、风险与技术栈自适应测试的 Agent Skill
 ├── tests/
 │   └── design-system/
 │       ├── quiet-native/
@@ -49,6 +50,7 @@ devkit/
 | `backend-logging` | ✅ 可用 | 跨语言日志系统：彩色对齐终端、结构化 NDJSON 与 Agent Skill | `packages/backend-logging/README.md` |
 | `design-system` | ✅ 可用 | 按风格分类的 UI 设计规范 | `packages/design-system/README.md` |
 | `project-docs` | ✅ 可用 | 按需创建和维护项目文档 | `packages/project-docs/README.md` |
+| `project-testing` | ✅ 可用 | 按改动、风险和技术栈选择并执行最相关测试 | `packages/project-testing/README.md` |
 
 ## 怎么用（三步）
 
